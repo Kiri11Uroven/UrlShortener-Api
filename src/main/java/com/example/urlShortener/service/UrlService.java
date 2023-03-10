@@ -26,7 +26,7 @@ public class UrlService implements Service {
         this.conversion = conversion;
     }
 
-    @ApiOperation("Метод преобразующий коротку ссылку в длинную")
+    @ApiOperation("Метод преобразующий коротку ссылку в оригинальную")
     @Override
     public Url getOriginalUrl(String shortUrl)  {
         Url originalUrl = urlRepository.findById((int) conversion.decode(shortUrl))
@@ -37,9 +37,9 @@ public class UrlService implements Service {
         return originalUrl;
     }
 
-    @ApiOperation("Метод преобразующий длинную ссылку в короткую")
+    @ApiOperation("Метод добавляющий новый обьект с оригинальной ссылкой в таблицу")
     @Override
-    public Url convertToShort(UrlDto urlDto) {
+    public Url addOriginalUrl(UrlDto urlDto) {
         if (urlRepository.count() < 101) {  // Проверка количества обьектов в таблице, если больше 100, новые обьекты не будут добавлены
             Url url1 = urlRepository.findByOriginalUrl(urlDto.getOriginalUrl());  // Проверка наличия одинакового обьекта в таблице, реализация идемпотентности операции
             if (url1 == null) {

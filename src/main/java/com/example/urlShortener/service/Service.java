@@ -8,6 +8,6 @@ public interface Service {
 
     Url getOriginalUrl(String shortUrl);
 
-    Url convertToShort(UrlDto urlDto);
+    Url addOriginalUrl(UrlDto urlDto);
 
 }
