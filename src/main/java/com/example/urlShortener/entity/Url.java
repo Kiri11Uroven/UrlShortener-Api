@@ -1,6 +1,7 @@
 package com.example.urlShortener.entity;
 
 import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,17 +15,12 @@ public class Url {
     @Column(name = "original link", nullable = false)
     private String originalUrl;
 
-    @Column(name = "create date", nullable = false)
-    private LocalDateTime createDate;
+    @Column(name = "creation date", nullable = false)
+    private LocalDateTime creationDate;
 
     public Url() {
     }
 
-    public Url(int id, String originalUrl, LocalDateTime createDate) {
-        this.id = id;
-        this.originalUrl = originalUrl;
-        this.createDate = createDate;
-    }
 
     public int getId() {
         return id;
@@ -42,11 +38,11 @@ public class Url {
         this.originalUrl = originalUrl;
     }
 
-    public LocalDateTime getCreateDate() {
-        return createDate;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }
